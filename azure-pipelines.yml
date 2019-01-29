@@ -13,6 +13,6 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: cd backendAPI/backendAPI
-- script: dotnet build  
+- script: cd backendAPI/
+- script: dotnet build 
  
