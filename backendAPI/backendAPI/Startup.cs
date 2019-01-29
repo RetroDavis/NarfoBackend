@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using backendAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace backendAPI
 {
@@ -29,9 +30,12 @@ namespace backendAPI
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=narfo;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=dev.retrotest.co.za;Database=narfo;User Id=group2;Password= jtn8TVNQMW_28esy;";
             services.AddDbContext<NarfoContext>
                 (options => options.UseSqlServer(connection));
+            
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +53,7 @@ namespace backendAPI
 
             app.UseHttpsRedirection();
             app.UseMvc();
+           
         }
     }
 }

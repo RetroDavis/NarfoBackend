@@ -39,6 +39,7 @@ namespace backendAPI.Controllers
         {
           newMember.Password = Encript.Encrypt_user(newMember.Password);
             await _db.Members.AddAsync(newMember);
+          await  _db.SaveChangesAsync();
             return   newMember;
         }
          
