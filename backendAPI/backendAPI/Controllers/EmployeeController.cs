@@ -12,31 +12,32 @@ namespace backendAPI.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
-        private readonly EmployeeContext _db;
-        public EmployeeController(EmployeeContext context)
+        private readonly NarfoContext _db;
+        public EmployeeController(NarfoContext context)
         {
             _db = context;
+            
         }
 
         // GET api/Employee
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> Get()
         {
-            return await _db.employees.ToListAsync();
+            return await _db.Employees.ToListAsync();
         }
 
         // GET api/Employee/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Employee>> Get(int id)
         {
-            return await _db.employees.FindAsync(id);
+            return await _db.Employees.FindAsync(id);
         }
 
         // POST api/Employee
         [HttpPost]
         public async Task Post([FromBody] Employee value)
         {
-            await _db.employees.AddAsync(value);
+            await _db.Employees.AddAsync(value);
             await _db.SaveChangesAsync();
         }
 
@@ -44,7 +45,7 @@ namespace backendAPI.Controllers
         [HttpPut("{id}")]
         public async Task Put(int id, [FromBody] Employee value)
         {
-            var entry = await _db.employees.FindAsync(id);
+            var entry = await _db.Employees.FindAsync(id);
             entry = value;
             await _db.SaveChangesAsync();
         }
@@ -53,8 +54,8 @@ namespace backendAPI.Controllers
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
-            var entry = await _db.employees.FindAsync(id);
-            _db.employees.Remove(entry);
+            var entry = await _db.Employees.FindAsync(id);
+            entry.Status = false;
             await _db.SaveChangesAsync();
         }
     }
