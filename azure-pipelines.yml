@@ -15,5 +15,5 @@ variables:
 steps:
 - script: cd backendAPI/
 - script: dotnet build backendAPI.sln
-- script: dotnet build --source NarfoBackend/backendAPI/
+- script: dotnet build --source NarfoBackend/backendAPI
  
