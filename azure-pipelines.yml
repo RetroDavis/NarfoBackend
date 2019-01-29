@@ -14,5 +14,5 @@ variables:
 
 steps:
 - script: cd backendAPI/
-- script: dotnet build --configuration backendAPI.sln
-  displayName: 'dotnet build backendAPI.sln'
+- script: dotnet build backendAPI.csproj --configuration 
+  displayName: 'dotnet build backendAPI.csproj'
