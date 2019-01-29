@@ -9,10 +9,11 @@ namespace UnitTestingController
     class Controller
     {
         private EmployeeController econtroller;
-   
+
+
         [TestCase(1, "just a name")]
      
-        public void Get(int value,string outcome)
+        public async Task Get(int value,string outcome)
         {
 
             //arrange
@@ -22,9 +23,6 @@ namespace UnitTestingController
             var x = econtroller.Get(value);
             Assert.AreEqual(outcome, x);
         }
-
-
-       
 
 
     }
