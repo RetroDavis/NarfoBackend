@@ -14,5 +14,6 @@ variables:
 
 steps:
 - script: cd backendAPI/
+- script: dotnet build backendAPI.sln
 
  
