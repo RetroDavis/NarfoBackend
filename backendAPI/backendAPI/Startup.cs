@@ -29,8 +29,8 @@ namespace backendAPI
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
-            services.AddDbContext<DbContext>
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=narfo;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<NarfoContext>
                 (options => options.UseSqlServer(connection));
         }
 
