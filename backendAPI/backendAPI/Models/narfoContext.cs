@@ -15,7 +15,7 @@ namespace backendAPI.Models
             : base(options)
         { }
 
-        public DbSet<Employee> Employees { get; set;}
+        public DbSet<Employee> Employees { get; set; }
         public DbSet<Member> Members { get; set; }
 
     }

@@ -34,14 +34,21 @@ namespace backendAPI.Controllers
         {
             return await _db.Members.ToListAsync();
         }
+
+        [HttpGet("get/{id}")]
+        public async Task<ActionResult<Member>> GetMembersAsync(int id)
+        {
+            return await _db.Members.FindAsync(id);
+        }
+
         [HttpPost("set")]
         public async Task<ActionResult<Member>> SetMember(Member newMember)
         {
           newMember.Password = Encript.Encrypt_user(newMember.Password);
             await _db.Members.AddAsync(newMember);
+          await  _db.SaveChangesAsync();
             return   newMember;
         }
-         
 
 
 
