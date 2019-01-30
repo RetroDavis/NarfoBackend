@@ -50,18 +50,6 @@ namespace backendAPI.Controllers
             return   newMember;
         }
 
-        [HttpPost("login")]
-        public async Task<ActionResult<Member>> LoginMember(Member newMember)
-        {
-          
-
-            Member member = _db.Members.Find(newMember.Username);
-
-            if (member.Password == newMember.Password)
-                return member;
-
-            return null;
-        }
 
 
     }
