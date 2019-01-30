@@ -34,6 +34,13 @@ namespace backendAPI.Controllers
         {
             return await _db.Members.ToListAsync();
         }
+
+        [HttpGet("get/{id}")]
+        public async Task<ActionResult<Member>> GetMembersAsync(int id)
+        {
+            return await _db.Members.FindAsync(id);
+        }
+
         [HttpPost("set")]
         public async Task<ActionResult<Member>> SetMember(Member newMember)
         {
@@ -42,8 +49,19 @@ namespace backendAPI.Controllers
           await  _db.SaveChangesAsync();
             return   newMember;
         }
-         
 
+        [HttpPost("login")]
+        public async Task<ActionResult<Member>> LoginMember(Member newMember)
+        {
+          
+
+            Member member = _db.Members.Find(newMember.Username);
+
+            if (member.Password == newMember.Password)
+                return member;
+
+            return null;
+        }
 
 
     }

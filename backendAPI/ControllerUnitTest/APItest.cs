@@ -12,7 +12,7 @@ namespace Tests
     public class Tests
     {
         private readonly HttpClient _client;
-        private readonly EmployeeContext _context;
+        private readonly NarfoContext _context;
 
 
         private EmployeeController econtroller;
@@ -26,7 +26,7 @@ namespace Tests
             //arrange
             //act
             //asse
-            var worker = new Employee { EmployeeID = value, Name = name, Surname = surname, Gender = gender, DOB= dob };
+            var worker = new Employee { Id = value, Name = name, Surname = surname, Gender = gender, DOB= dob };
             var response = await _client.GetAsync($"/get/{value}");
             // Check if status code is OK
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
@@ -35,7 +35,7 @@ namespace Tests
             // Deserialize response JSON to Employee class
             var EmployeeResponse = JsonConvert.DeserializeObject<Employee>(jsonResponse);
             // Check if the employee is the same
-            Assert.AreEqual(worker.EmployeeID, EmployeeResponse.EmployeeID);
+            Assert.AreEqual(worker.Id, EmployeeResponse.Id);
             Assert.AreEqual(worker.Name, EmployeeResponse.Name);
             Assert.AreEqual(worker.Surname, EmployeeResponse.Surname);
             Assert.AreEqual(worker.Gender, EmployeeResponse.Gender);
@@ -51,7 +51,7 @@ namespace Tests
             //arrange
             //act
             //asse
-            var worker = new Employee { EmployeeID = value, Name = name, Surname = surname, Gender = gender, DOB = dob };
+            var worker = new Employee { Id = value, Name = name, Surname = surname, Gender = gender, DOB = dob };
 
             // var response = await _client.GetAsync($"/get/{value}");
             var stringContent = new StringContent(worker.ToString());        
@@ -65,7 +65,7 @@ namespace Tests
             var EmployeeResponse = JsonConvert.DeserializeObject<Employee>(jsonResponse);
             // Check if the Employee is the same
 
-            Assert.AreEqual(worker.EmployeeID, EmployeeResponse.EmployeeID);
+            Assert.AreEqual(worker.Id, EmployeeResponse.Id);
             Assert.AreEqual(worker.Name, EmployeeResponse.Name);
             Assert.AreEqual(worker.Surname, EmployeeResponse.Surname);
             Assert.AreEqual(worker.Gender, EmployeeResponse.Gender);
@@ -75,7 +75,7 @@ namespace Tests
 
 
 
-
+    
 
     }
 }
