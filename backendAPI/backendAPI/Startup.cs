@@ -12,14 +12,11 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using backendAPI.Models;
 
-
 namespace backendAPI
 {
     public class Startup
     {
-        private string connection_string = @"Server=sql101labs1793591179000.westeurope.cloudapp.azure.com;Database=sql101.simtembile.soginga;User Id=simtembilesoginga;Password=Printwork31320;";
-
-
+        
 
         public Startup(IConfiguration configuration)
         {
@@ -33,11 +30,14 @@ namespace backendAPI
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-          
-            var connection = ;
-            services.AddDbContext<EmployeeContext>(options => options.UseSqlServer(connection));
 
-            services.AddSingleton(Configuration);
+
+            var connection = @"Server=dev.retrotest.co.za;Database=narfo;User Id=group2;Password= jtn8TVNQMW_28esy;";
+            services.AddDbContext<NarfoContext>
+                (options => options.UseSqlServer(connection));
+            
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +53,7 @@ namespace backendAPI
             
 
             app.UseMvc();
+           
         }
     }
 }
