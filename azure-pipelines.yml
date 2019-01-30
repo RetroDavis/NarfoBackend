@@ -13,8 +13,10 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet restore
-- script: cd backendAPI/
-- script: dotnet build backendAPI.csproj
+- script: 
+    cd backendAPI
+    dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration'
+
 
  
