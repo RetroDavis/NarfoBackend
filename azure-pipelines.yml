@@ -13,6 +13,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- script: dotnet restore
 - script: cd backendAPI/
 - script: dotnet build backendAPI.csproj
 
