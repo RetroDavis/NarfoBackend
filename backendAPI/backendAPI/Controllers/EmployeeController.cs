@@ -2,61 +2,69 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using backendAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace backendAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    [Route("Employee")]
     public class EmployeeController : ControllerBase
     {
         private readonly NarfoContext _db;
-        public EmployeeController(NarfoContext context)
+        public EmployeeController(NarfoContext db)
         {
-            _db = context;
-            
+            _db = db;
+            if (!_db.Employees.Any())
+            {
+                Employee newEmployee = new Employee();
+                newEmployee.Name = "admin";
+                newEmployee.Surname = "admin";
+                newEmployee.Gender = "admin";
+                newEmployee.DOB = "admin";
+                newEmployee.Status = true;
+
+                _db.Employees.AddAsync(newEmployee);
+                _db.SaveChanges();
+            }
+
         }
 
-        // GET api/Employee
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> Get()
+        [HttpGet("get/all")]
+        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployeesAsync()
         {
             return await _db.Employees.ToListAsync();
         }
 
-        // GET api/Employee/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Employee>> Get(int id)
+        [HttpGet("get/{id}")]
+        public async Task<ActionResult<Employee>> GetEmployeesAsync(int id)
         {
             return await _db.Employees.FindAsync(id);
         }
 
-        // POST api/Employee
-        [HttpPost]
-        public async Task Post([FromBody] Employee value)
+        [HttpPost("set")]
+        public async Task<ActionResult<Employee>> SetEmployee(Employee newEmployee)
         {
-            await _db.Employees.AddAsync(value);
+
+            await _db.Employees.AddAsync(newEmployee);
             await _db.SaveChangesAsync();
+            return newEmployee;
         }
 
-        // PUT api/Employee/5
-        [HttpPut("{id}")]
-        public async Task Put(int id, [FromBody] Employee value)
+        [HttpPost("login")]
+        public async Task<ActionResult<Employee>> LoginEmployee(Employee newEmployee)
         {
-            var entry = await _db.Employees.FindAsync(id);
-            entry = value;
-            await _db.SaveChangesAsync();
+            // newEmployee.Password = Encript.Encrypt_user(newEmployee.Password);
+
+            Employee Employee = _db.Employees.Find(newEmployee.Name);
+
+            if (Employee.Name == newEmployee.Name)
+                return Employee;
+
+            return null;
         }
 
-        // DELETE api/Employee/5
-        [HttpDelete("{id}")]
-        public async Task Delete(int id)
-        {
-            var entry = await _db.Employees.FindAsync(id);
-            entry.Status = false;
-            await _db.SaveChangesAsync();
-        }
+
     }
 }
