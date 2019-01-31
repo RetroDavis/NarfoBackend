@@ -45,7 +45,7 @@ namespace backendAPI.Controllers
 
         [HttpPost("set")]
       
-        public async Task<ActionResult<Member>> SetMember(Member newMember)
+        public async Task<ActionResult<Member>> SetMember([FromBody]Member newMember)
         {
           newMember.Password = Encript.Encrypt_user(newMember.Password);
             await _db.Members.AddAsync(newMember);
