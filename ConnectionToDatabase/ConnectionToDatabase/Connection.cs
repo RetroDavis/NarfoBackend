@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ConnectionToDatabase
 {
-    public class Connect
+    public class Connection
     {
 
-        public string OpenConnection()
+        public string DBConnection()
         {
             string connectionString;
             SqlConnection connect;
@@ -24,25 +24,8 @@ namespace ConnectionToDatabase
             {
                 return "Open";
             }
-
             connect.Close();
             return "Closed";
-
-
-        }
-
-        public string CloseConnection()
-        {
-
-            string connectionString;
-            SqlConnection connect;
-
-            connectionString = @"Data Source=dev.retrotest.co.za;Initial Catalog=narfo;User ID=group2;Password=jtn8TVNQMW_28esy";
-            connect = new SqlConnection(connectionString);
-            connect.Open();
-            connect.Close();
-            return "Closed";
-
         }
     }
 }

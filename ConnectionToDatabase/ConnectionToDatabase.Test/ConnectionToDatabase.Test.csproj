@@ -6,10 +6,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9DEBE815-FB4B-4C85-9767-7BB92F673793}</ProjectGuid>
+    <ProjectGuid>{53F78808-E32A-47F9-9AD5-01CEC05E2548}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConnectDatabase.test</RootNamespace>
-    <AssemblyName>ConnectDatabase.test</AssemblyName>
+    <RootNamespace>ConnectionToDatabase.Test</RootNamespace>
+    <AssemblyName>ConnectionToDatabase.Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -52,15 +52,15 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test.cs" />
+    <Compile Include="Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConnectDatabase\ConnectionToDatabase.csproj">
-      <Project>{dc350ca2-5b0d-4e76-886d-c2a3e6643581}</Project>
+    <ProjectReference Include="..\ConnectionToDatabase\ConnectionToDatabase.csproj">
+      <Project>{5b099485-330e-4ab6-bbf1-9dff57be0c51}</Project>
       <Name>ConnectionToDatabase</Name>
     </ProjectReference>
   </ItemGroup>

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DC350CA2-5B0D-4E76-886D-C2A3E6643581}</ProjectGuid>
+    <ProjectGuid>{5B099485-330E-4AB6-BBF1-9DFF57BE0C51}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConnectDatabase</RootNamespace>
-    <AssemblyName>ConnectDatabase</AssemblyName>
+    <RootNamespace>ConnectionToDatabase</RootNamespace>
+    <AssemblyName>ConnectionToDatabase</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connect.cs" />
+    <Compile Include="Connection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConnectDatabase.test
+namespace ConnectionToDatabase
 {
     class Program
     {
