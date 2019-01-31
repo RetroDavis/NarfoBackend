@@ -21,6 +21,7 @@ namespace backendAPI
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+          
         }
 
         public IConfiguration Configuration { get; }
@@ -29,7 +30,12 @@ namespace backendAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
             var connection = @"Server=dev.retrotest.co.za;Database=narfo;User Id=group2;Password= jtn8TVNQMW_28esy;";
             services.AddDbContext<NarfoContext>
                 (options => options.UseSqlServer(connection));
@@ -50,7 +56,7 @@ namespace backendAPI
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseCors("MyPolicy");
             app.UseHttpsRedirection();
             app.UseMvc();
            

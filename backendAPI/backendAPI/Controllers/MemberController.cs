@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using backendAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Cors;
 
 namespace backendAPI.Controllers
 {
     [Route("Member")]
+    [EnableCors("MyPolicy")]
     public class MemberController : ControllerBase
     {
         private readonly NarfoContext _db;
@@ -35,6 +37,7 @@ namespace backendAPI.Controllers
             return await _db.Members.ToListAsync();
         }
         [HttpPost("set")]
+      
         public async Task<ActionResult<Member>> SetMember(Member newMember)
         {
           newMember.Password = Encript.Encrypt_user(newMember.Password);
